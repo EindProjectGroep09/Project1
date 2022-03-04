@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Main/Main.unity
+    guid: 1bc3b6d5b58ac5b4688ec405286b61f1
+  - enabled: 1
+    path: Assets/Scenes/Main/Map.unity
+    guid: 5f0b47cd8231b334ab3d8d11aed449cd
+  - enabled: 1
+    path: Assets/Scenes/Maps/BikeRoad.unity
+    guid: c375fad875c9cca41be92a1574a6c7d3
+  - enabled: 1
+    path: Assets/Scenes/Maps/Hunebedden.unity
+    guid: 6e0e7b3ca2c857749a2e57cf7a526cc6
+  - enabled: 1
+    path: Assets/Scenes/Maps/Piramid.unity
+    guid: 899a15cc3dc10e74eabc0667fdc8f916
   m_configObjects: {}
