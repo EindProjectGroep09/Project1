@@ -3,9 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
+enum Level
+{
+    Hunebedden,
+    Pyramid,
+    BikeRoad,
+}
+
 public class UIController : MonoBehaviour
 {
 
+    Level level;
 
     public void OpenMap()
     {
@@ -19,16 +28,32 @@ public class UIController : MonoBehaviour
 
     public void OpenHunebedden()
     {
-        SceneManager.LoadScene("Hunebedden");
+        //Open Pop-Up Hunebedden
+
+        //Set enum value to 
+        level = Level.Hunebedden;
     }
     public void OpenPyramid()
     {
-        SceneManager.LoadScene("Pyramid");
+        //Open Pop-Up Pyramid
+
+        //Set enum value to Pyramid
+        level = Level.Pyramid;
+
+
     }
     public void OpenBikeRoad()
     {
-        SceneManager.LoadScene("BikeRoad");
+        //Open Pop-Up Bike road
+
+        //Set enum value to BikeRoad
+        level = Level.BikeRoad;
+
     }
 
+    void StartGame()
+    {
+        SceneManager.LoadScene(level.ToString());
+    }
 
 }

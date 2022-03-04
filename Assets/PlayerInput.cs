@@ -22,17 +22,6 @@ public class PlayerInput : MonoBehaviour
         transform.Rotate(0f, Input.GetAxis("Mouse X") * Sensetivity, 0f, Space.Self);
 
 
-        if (Input.GetMouseButton(1))
-	    {
-            //Play animation cam going to screen
-
-
-           // TakePicture(); //Zoom in and out
-
-           // ZoomInAndOut(); //Call Take a picture on left mouse button
-	    }
-
-
     }
 
 }

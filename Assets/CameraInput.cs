@@ -15,25 +15,34 @@ public class CameraInput : MonoBehaviour
 
     void Update()
     {
-
-
         //Update the camera's field of view to be the variable returning from the Slider
         Camera.main.fieldOfView = m_FieldOfView;
         
+        float max, min;
+        max = 60.0f;
+        min = 20.0f;
 
+        if (Input.GetMouseButton(1))
+        {
+            m_FieldOfView -= Input.GetAxis("Mouse ScrollWheel") * 25;
+            m_FieldOfView = Mathf.Clamp(m_FieldOfView, min, max);
+        }
+        else if (!Input.GetMouseButton(1))
+        {
+            m_FieldOfView = 60.0f;
+        }
     }
 
     void OnGUI()
     {
         //Set up the maximum and minimum values the Slider can return (you can change these)
-        float max, min;
-        max = 60.0f;
-        min = 20.0f;
-        //This Slider changes the field of view of the Camera between the minimum and maximum values
-        m_FieldOfView = GUI.HorizontalSlider(new Rect(20, 20, 100, 40), m_FieldOfView, min, max);
 
-        m_FieldOfView -= Input.GetAxis("Mouse ScrollWheel") * 10;
-        m_FieldOfView = Mathf.Clamp(m_FieldOfView, min, max);
+
+        //This Slider changes the field of view of the Camera between the minimum and maximum values
+        //m_FieldOfView = GUI.HorizontalSlider(new Rect(20, 20, 100, 40), m_FieldOfView, min, max);
+
+
+
     }
 
 
