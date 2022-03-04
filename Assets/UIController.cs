@@ -9,7 +9,7 @@ public class UIController : MonoBehaviour
 
     public void OpenMap()
     {
-        SceneManager.LoadScene("Map");   
+        SceneManager.LoadScene("Map");
     }
 
     public void QuitGame()
@@ -17,6 +17,18 @@ public class UIController : MonoBehaviour
         Application.Quit();
     }
 
+    public void OpenHunebedden()
+    {
+        SceneManager.LoadScene("Hunebedden");
+    }
+    public void OpenPyramid()
+    {
+        SceneManager.LoadScene("Pyramid");
+    }
+    public void OpenBikeRoad()
+    {
+        SceneManager.LoadScene("BikeRoad");
+    }
 
 
 }
