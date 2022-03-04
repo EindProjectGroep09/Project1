@@ -1,0 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CameraInput : MonoBehaviour
+{
+    //This is the field of view that the Camera has
+    float m_FieldOfView;
+
+    void Start()
+    {
+        //Start the Camera field of view at 60
+        m_FieldOfView = 60.0f;
+    }
+
+    void Update()
+    {
+
+
+        //Update the camera's field of view to be the variable returning from the Slider
+        Camera.main.fieldOfView = m_FieldOfView;
+        
+
+    }
+
+    void OnGUI()
+    {
+        //Set up the maximum and minimum values the Slider can return (you can change these)
+        float max, min;
+        max = 60.0f;
+        min = 20.0f;
+        //This Slider changes the field of view of the Camera between the minimum and maximum values
+        m_FieldOfView = GUI.HorizontalSlider(new Rect(20, 20, 100, 40), m_FieldOfView, min, max);
+
+        m_FieldOfView -= Input.GetAxis("Mouse ScrollWheel") * 10;
+        m_FieldOfView = Mathf.Clamp(m_FieldOfView, min, max);
+    }
+
+
+}

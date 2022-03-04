@@ -27,21 +27,11 @@ public class PlayerInput : MonoBehaviour
             //Play animation cam going to screen
 
 
-            TakePicture(); //Zoom in and out
+           // TakePicture(); //Zoom in and out
 
-            ZoomInAndOut(); //Call Take a picture on left mouse button
+           // ZoomInAndOut(); //Call Take a picture on left mouse button
 	    }
 
-
-    }
-
-    void TakePicture()
-    {
-
-    }
-
-    void ZoomInAndOut()
-    {
 
     }
 
