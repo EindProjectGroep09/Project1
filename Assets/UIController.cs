@@ -15,6 +15,15 @@ public class UIController : MonoBehaviour
 {
 
     Level level;
+    int itemsInLevel;
+
+    GameObject[] gameObjects;
+    private void Update()
+    {
+        gameObjects = GameObject.FindGameObjectsWithTag("Item");
+
+        itemsInLevel = gameObjects.Length;
+    }
 
     public void OpenMap()
     {
@@ -56,4 +65,9 @@ public class UIController : MonoBehaviour
         SceneManager.LoadScene(level.ToString());
     }
 
+
+    void OnGUI()
+    {
+        GUI.Label(new Rect(10, 10, 100, 20), itemsInLevel + " Items Remaining");
+    }
 }
