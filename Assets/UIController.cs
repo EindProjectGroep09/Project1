@@ -4,18 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-enum Level
+/*enum Level
 {
     Hunebedden,
     Pyramid,
     BikeRoad,
-}
+}*/
 
 public class UIController : MonoBehaviour
 {
 
-    Level level;
+    //Level level;
     int itemsInLevel;
+
+    public string sceneName;
 
     GameObject[] gameObjects;
     private void Update()
@@ -35,7 +37,7 @@ public class UIController : MonoBehaviour
         Application.Quit();
     }
 
-    public void OpenHunebedden()
+/*    public void OpenHunebedden()
     {
         //Open Pop-Up Hunebedden
 
@@ -63,11 +65,19 @@ public class UIController : MonoBehaviour
     void StartGame()
     {
         SceneManager.LoadScene(level.ToString());
-    }
+    }*/
 
+    public void LoadScene(string nameOfScene)
+    {
+        sceneName = nameOfScene;
+        SceneManager.LoadScene(nameOfScene);
+    }
 
     void OnGUI()
     {
-        GUI.Label(new Rect(10, 10, 100, 20), itemsInLevel + " Items Remaining");
+        if (SceneManager.GetActiveScene().name != "Main" || SceneManager.GetActiveScene().name != "Map")
+        {
+            GUI.Label(new Rect(10, 10, 100, 20), itemsInLevel + " Items Remaining");
+        }
     }
 }

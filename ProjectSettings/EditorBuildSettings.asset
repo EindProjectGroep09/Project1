@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Maps/BikeRoad.unity
     guid: c375fad875c9cca41be92a1574a6c7d3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Maps/Hunebedden.unity
     guid: 6e0e7b3ca2c857749a2e57cf7a526cc6
   - enabled: 1
