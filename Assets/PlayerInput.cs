@@ -5,14 +5,18 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField]
-    float Sensetivity = 1;
+    float Sensitivity = 1;
 
     float zoomLevel; //Only for testing purposes
+   
+    float min, max;
+    float rotationX;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        min = -54;
+        max = 56f;
     }
 
     void FixedUpdate(){
@@ -38,10 +42,18 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(zoomLevel);
-        transform.Rotate(0f, Input.GetAxis("Mouse X") * Sensetivity, 0f, Space.Self);
+        //Vector3 mouseX = new Vector3(0f, Input.GetAxis("Mouse X") * Sensitivity, 0f);
+        //        m_FieldOfView = Mathf.Clamp(m_FieldOfView, min, max);
 
+       // Debug.Log(zoomLevel);
 
+        rotationX += Input.GetAxis("Mouse X");
+
+        rotationX = Mathf.Clamp(rotationX, min, max);
+
+        //transform.Rotate(0f, mouseX * Sensitivity, 0f, Space.Self);
+        transform.localEulerAngles = new Vector3(0f, rotationX, 0f);
+        //Debug.Log(mouseX);
     }
 
 }

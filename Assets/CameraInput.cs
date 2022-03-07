@@ -6,21 +6,23 @@ public class CameraInput : MonoBehaviour
 {
     //This is the field of view that the Camera has
     float m_FieldOfView;
+    float max, min;
+
+    [SerializeField]Camera cam;
 
     void Start()
     {
         //Start the Camera field of view at 60
         m_FieldOfView = 60.0f;
+        max = 60.0f;
+        min = 20.0f;
     }
 
     void Update()
     {
         //Update the camera's field of view to be the variable returning from the Slider
-        Camera.main.fieldOfView = m_FieldOfView;
-        
-        float max, min;
-        max = 60.0f;
-        min = 20.0f;
+        cam.fieldOfView = m_FieldOfView;
+
 
         if (Input.GetMouseButton(1))
         {
@@ -35,6 +37,7 @@ public class CameraInput : MonoBehaviour
 
     void OnGUI()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         //Set up the maximum and minimum values the Slider can return (you can change these)
 
 
