@@ -4,27 +4,35 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-/*enum Level
-{
-    Hunebedden,
-    Pyramid,
-    BikeRoad,
-}*/
 
 public class UIController : MonoBehaviour
 {
 
-    //Level level;
-    int itemsInLevel;
-
     public string sceneName;
 
-    GameObject[] gameObjects;
+    [SerializeField]GameObject mainMenuText;
+    float timer = 0.75f;
+    bool test = true;
     private void Update()
     {
-        gameObjects = GameObject.FindGameObjectsWithTag("Item");
+        if (SceneManager.GetActiveScene().name == "Main")
+        {
+            if (timer <= 0)
+            {
+                test = !test;
+                timer = 0.75f;
+                MainMenuTextAnimation();  
+            }
+            else
+            {
+                timer -= Time.deltaTime;
+            }
+        }
+    }
 
-        itemsInLevel = gameObjects.Length;
+    void MainMenuTextAnimation()
+    {
+        mainMenuText.SetActive(test);
     }
 
     public void OpenMap()
@@ -37,47 +45,10 @@ public class UIController : MonoBehaviour
         Application.Quit();
     }
 
-/*    public void OpenHunebedden()
-    {
-        //Open Pop-Up Hunebedden
-
-        //Set enum value to 
-        level = Level.Hunebedden;
-    }
-    public void OpenPyramid()
-    {
-        //Open Pop-Up Pyramid
-
-        //Set enum value to Pyramid
-        level = Level.Pyramid;
-
-
-    }
-    public void OpenBikeRoad()
-    {
-        //Open Pop-Up Bike road
-
-        //Set enum value to BikeRoad
-        level = Level.BikeRoad;
-
-    }
-
-    void StartGame()
-    {
-        SceneManager.LoadScene(level.ToString());
-    }*/
-
     public void LoadScene(string nameOfScene)
     {
         sceneName = nameOfScene;
         SceneManager.LoadScene(nameOfScene);
     }
 
-    void OnGUI()
-    {
-        if (SceneManager.GetActiveScene().name != "Main" || SceneManager.GetActiveScene().name != "Map")
-        {
-            GUI.Label(new Rect(10, 10, 100, 20), itemsInLevel + " Items Remaining");
-        }
-    }
 }
