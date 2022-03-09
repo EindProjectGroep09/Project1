@@ -10,7 +10,7 @@ public class CameraInput : MonoBehaviour
 
     [SerializeField]Camera cam;
 
-    bool cameraToggle = false;
+    public bool cameraToggle = false;
     bool cameraDotToggle = true;
     [SerializeField] GameObject cameraView, cameraScreen, camerScreenNoDot;
 
@@ -37,14 +37,13 @@ public class CameraInput : MonoBehaviour
         }
         //Update the camera's field of view to be the variable returning from the Slider
         cam.fieldOfView = m_FieldOfView;
-        Debug.Log(m_FieldOfView);
 
 
         if (Input.GetMouseButton(1))
         {
             cameraView.SetActive(cameraDotToggle);
 
-            //cameraScreen.SetActive(true);
+            cameraScreen.SetActive(true);
             m_FieldOfView -= Input.GetAxis("Mouse ScrollWheel") * 25;
             m_FieldOfView = Mathf.Clamp(m_FieldOfView, min, max);
             cameraScreen.SetActive(true);
@@ -61,7 +60,7 @@ public class CameraInput : MonoBehaviour
 
     void OnGUI()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;//
     }
 
 

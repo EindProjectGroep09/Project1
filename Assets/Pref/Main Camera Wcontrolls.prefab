@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 5432964745012936781}
   - component: {fileID: 5432964745012936770}
   - component: {fileID: 5432964745012936771}
-  - component: {fileID: 5432964745012936780}
+  - component: {fileID: 5111387842924933603}
+  - component: {fileID: 6691050942488633423}
   m_Layer: 0
   m_Name: Main Camera Wcontrolls
   m_TagString: MainCamera
@@ -84,7 +85,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5432964745012936768}
   m_Enabled: 1
---- !u!114 &5432964745012936780
+--- !u!114 &5111387842924933603
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,7 +94,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 5432964745012936768}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0416cafa48cd1034ca413caf76d1d26a, type: 3}
+  m_Script: {fileID: 11500000, guid: 723a6182c41e2f34dbc4eae5b8c624dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sensetivity: 1
+  Sensitivity: 1
+--- !u!114 &6691050942488633423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432964745012936768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 171297caae752ef4a8a13b3274b1482b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 5432964745012936770}
+  cameraToggle: 0
+  cameraView: {fileID: 0}
+  cameraScreen: {fileID: 0}
+  camerScreenNoDot: {fileID: 0}

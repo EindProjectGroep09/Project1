@@ -29,6 +29,10 @@ public class PlayerInput : MonoBehaviour
         {
             //hit the item
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            if(gameObject.GetComponent<CameraInput>().cameraToggle == true && Input.GetMouseButtonDown(0)){
+                Debug.Log("hit object");
+            }
+
         }
         else
         {
