@@ -8,7 +8,7 @@ public class CameraInput : MonoBehaviour
     float m_FieldOfView;
     float max, min;
 
-    [SerializeField] Camera cam;
+    [SerializeField]Camera cam;
 
     bool cameraToggle = false;
     bool cameraDotToggle = true;
@@ -39,11 +39,7 @@ public class CameraInput : MonoBehaviour
         cam.fieldOfView = m_FieldOfView;
 
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            cameraToggle = !cameraToggle;
-        }
-        if (cameraToggle)
+        if (Input.GetMouseButton(1))
         {
             cameraView.SetActive(cameraDotToggle);
 
@@ -53,7 +49,7 @@ public class CameraInput : MonoBehaviour
             cameraScreen.SetActive(true);
             camerScreenNoDot.SetActive(true);
         }
-        else
+        else if (!Input.GetMouseButton(1))
         {
             m_FieldOfView = 60.0f;
             cameraView.SetActive(false);
