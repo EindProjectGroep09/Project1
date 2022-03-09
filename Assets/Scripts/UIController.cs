@@ -4,20 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-/*enum Level
-{
-    Hunebedden,
-    Pyramid,
-    BikeRoad,
-}*/
-
 public class UIController : MonoBehaviour
 {
 
-    //Level level;
     int itemsInLevel;
 
     public string sceneName;
+
+    [SerializeField] Text LevelInformationText;
 
     GameObject[] gameObjects;
     private void Update()
@@ -37,40 +31,27 @@ public class UIController : MonoBehaviour
         Application.Quit();
     }
 
-/*    public void OpenHunebedden()
+    public void LoadScene()
     {
-        //Open Pop-Up Hunebedden
-
-        //Set enum value to 
-        level = Level.Hunebedden;
-    }
-    public void OpenPyramid()
-    {
-        //Open Pop-Up Pyramid
-
-        //Set enum value to Pyramid
-        level = Level.Pyramid;
-
-
-    }
-    public void OpenBikeRoad()
-    {
-        //Open Pop-Up Bike road
-
-        //Set enum value to BikeRoad
-        level = Level.BikeRoad;
-
+        SceneManager.LoadScene(sceneName);
     }
 
-    void StartGame()
+    public void SelectLevel(string sceneNameLevel)
     {
-        SceneManager.LoadScene(level.ToString());
-    }*/
+        sceneName = sceneNameLevel;
 
-    public void LoadScene(string nameOfScene)
-    {
-        sceneName = nameOfScene;
-        SceneManager.LoadScene(nameOfScene);
+        switch (sceneName)
+        {
+            case "Hunebedden":
+                LevelInformationText.text = "Location: Hunebedstraat 27, 9531 JV Borger Facts: These stones are prehistoric structures that can be found in various places such as the Netherlands.";
+                break;            
+            case "Pyramid":
+                LevelInformationText.text = "Location: Zeisterweg 98, 3931 MG Woudenberg Facts: This pyramide was build in 1804 by general Auguste de Marmont during the French revolution.Back then it served as a watchtower at Auguste’s war camp, but now it doesn’t have a purpose anymore.";
+                break;            
+            case "BikeRoad":
+                LevelInformationText.text = "Location: Van Gogh-Roosegaarde Eindhoven Facts: The bike trail is located in the same area where Van Gogh made his first paintings. It’s made of thousands of lights that glow at night. This 600 metre(2000 ft.) bike trail was made by Daan Roosegaarde as a tribute to the painter Van gogh.  Roosegaarde and his team started making the trail in 2012 and finished the project in 2015.";
+                break;
+        }
     }
 
     void OnGUI()
