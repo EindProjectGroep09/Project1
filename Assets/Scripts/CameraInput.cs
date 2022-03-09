@@ -39,7 +39,7 @@ public class CameraInput : MonoBehaviour
         cam.fieldOfView = m_FieldOfView;
 
 
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
             cameraToggle = !cameraToggle;
         }
