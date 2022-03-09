@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    RaycastHit hit;
     [SerializeField]
     float Sensitivity = 1;
 
@@ -21,9 +20,12 @@ public class PlayerInput : MonoBehaviour
     }
 
     void FixedUpdate(){
+        // Bit shift the index of the layer (8) to get a bit mask
+        int layerMask = LayerMask.GetMask("items");
 
-
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity) && hit.transform.tag == "Item")
+        RaycastHit hit;
+        // Does the ray intersect any objects excluding the player layer
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             Debug.Log("Did Hit");
