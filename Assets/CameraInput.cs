@@ -26,8 +26,10 @@ public class CameraInput : MonoBehaviour
 
         if (Input.GetMouseButton(1))
         {
+
             m_FieldOfView -= Input.GetAxis("Mouse ScrollWheel") * 25;
             m_FieldOfView = Mathf.Clamp(m_FieldOfView, min, max);
+
         }
         else if (!Input.GetMouseButton(1))
         {

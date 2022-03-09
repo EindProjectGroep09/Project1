@@ -9,51 +9,46 @@ public class PlayerInput : MonoBehaviour
 
     float zoomLevel; //Only for testing purposes
    
-    float min, max;
+    Vector2 clampX;
+    Vector2 clampY;
     float rotationX;
+    float rotationY;
 
     // Start is called before the first frame update
     void Start()
     {
-        min = -54;
-        max = 56f;
+        clampX = new Vector2(-54f, 56f);
+        clampY = new Vector2(-15f,15f);
     }
 
     void FixedUpdate(){
-        // Bit shift the index of the layer (8) to get a bit mask
-        int layerMask = LayerMask.GetMask("items");
 
         RaycastHit hit;
-        // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity) && hit.transform.tag == "Item")
         {
+            //hit the item
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            Debug.Log("Did Hit");
         }
         else
         {
+            //dit not hit the item
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            Debug.Log("Did not Hit");
         }
     }
 
 
 
-    // Update is called once per frame
     void Update()
     {
-        //Vector3 mouseX = new Vector3(0f, Input.GetAxis("Mouse X") * Sensitivity, 0f);
-        //        m_FieldOfView = Mathf.Clamp(m_FieldOfView, min, max);
-
-       // Debug.Log(zoomLevel);
-
         rotationX += Input.GetAxis("Mouse X");
+        rotationY += Input.GetAxis("Mouse Y");
 
-        rotationX = Mathf.Clamp(rotationX, min, max);
+        rotationX = Mathf.Clamp(rotationX, clampX.x, clampX.y);
+        rotationY = Mathf.Clamp(rotationY, clampY.x, clampY.y);
 
-        //transform.Rotate(0f, mouseX * Sensitivity, 0f, Space.Self);
-        transform.localEulerAngles = new Vector3(0f, rotationX, 0f);
-        //Debug.Log(mouseX);
+        transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0f);
+        Debug.Log(rotationY);
     }
 
 }
