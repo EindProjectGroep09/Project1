@@ -66,7 +66,7 @@ public class CameraInput : MonoBehaviour
 
     void OnGUI()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;//
     }
 
 
