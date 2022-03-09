@@ -37,6 +37,7 @@ public class CameraInput : MonoBehaviour
         }
         //Update the camera's field of view to be the variable returning from the Slider
         cam.fieldOfView = m_FieldOfView;
+        Debug.Log(m_FieldOfView);
 
 
         if (Input.GetMouseButton(1))

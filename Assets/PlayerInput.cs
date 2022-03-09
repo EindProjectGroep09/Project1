@@ -48,7 +48,6 @@ public class PlayerInput : MonoBehaviour
         rotationY = Mathf.Clamp(rotationY, clampY.x, clampY.y);
 
         transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0f);
-        Debug.Log(rotationY);
     }
 
 }
