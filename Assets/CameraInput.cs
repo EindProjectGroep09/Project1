@@ -39,7 +39,13 @@ public class CameraInput : MonoBehaviour
         cam.fieldOfView = m_FieldOfView;
 
 
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
+        {
+            cameraToggle = !cameraToggle;
+
+        }
+
+        if (cameraToggle)
         {
             cameraView.SetActive(cameraDotToggle);
 
@@ -49,7 +55,7 @@ public class CameraInput : MonoBehaviour
             cameraScreen.SetActive(true);
             camerScreenNoDot.SetActive(true);
         }
-        else if (!Input.GetMouseButton(1))
+        else
         {
             m_FieldOfView = 60.0f;
             cameraView.SetActive(false);
