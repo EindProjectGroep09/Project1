@@ -42,6 +42,11 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (gameObject.GetComponent<CameraInput>().cameraToggle && Input.GetMouseButtonDown(0))
+        {
+            //Vind item
+        }
         //Vector3 mouseX = new Vector3(0f, Input.GetAxis("Mouse X") * Sensitivity, 0f);
         //        m_FieldOfView = Mathf.Clamp(m_FieldOfView, min, max);
 
