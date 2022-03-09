@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField]
@@ -10,8 +10,10 @@ public class PlayerInput : MonoBehaviour
     float zoomLevel; //Only for testing purposes
    
     float min, max;
-    float rotationX;
-
+    float rotationX, rotationY;
+    [SerializeField]GameObject itemText;
+    GameObject[] gos;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,10 @@ public class PlayerInput : MonoBehaviour
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
         {
+            if (gameObject.GetComponent<CameraInput>().cameraToggle && Input.GetMouseButtonDown(0))
+            {
+                hit.collider.gameObject.tag = "Found";
+            }
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             Debug.Log("Did Hit");
         }
@@ -35,6 +41,7 @@ public class PlayerInput : MonoBehaviour
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
             Debug.Log("Did not Hit");
         }
+
     }
 
 
@@ -43,22 +50,24 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
 
-        if (gameObject.GetComponent<CameraInput>().cameraToggle && Input.GetMouseButtonDown(0))
-        {
-            //Vind item
-        }
-        //Vector3 mouseX = new Vector3(0f, Input.GetAxis("Mouse X") * Sensitivity, 0f);
-        //        m_FieldOfView = Mathf.Clamp(m_FieldOfView, min, max);
+        //Vind item
 
-       // Debug.Log(zoomLevel);
 
         rotationX += Input.GetAxis("Mouse X");
+        rotationY -= Input.GetAxis("Mouse Y");
 
         rotationX = Mathf.Clamp(rotationX, min, max);
+        rotationY = Mathf.Clamp(rotationY, -5, 15);
 
-        //transform.Rotate(0f, mouseX * Sensitivity, 0f, Space.Self);
-        transform.localEulerAngles = new Vector3(0f, rotationX, 0f);
+        transform.localEulerAngles = new Vector3(rotationY, rotationX, 0f);
         //Debug.Log(mouseX);
+      
+        gos = GameObject.FindGameObjectsWithTag("Found");
+        if (gos.Length == 2)
+        {
+            SceneManager.LoadScene("Main");
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
 }
