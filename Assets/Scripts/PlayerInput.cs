@@ -12,7 +12,7 @@ public class PlayerInput : MonoBehaviour
 
     Vector2 clampX, clampY;
     float rotationX, rotationY;
-    [SerializeField] GameObject itemText;
+    //[SerializeField] GameObject itemText;
     GameObject[] gos;
 
     // Start is called before the first frame update

@@ -16,6 +16,8 @@ public class UIController : MonoBehaviour
     GameObject[] gameObjects;
     private void Update()
     {
+        Cursor.lockState = CursorLockMode.None;
+
         gameObjects = GameObject.FindGameObjectsWithTag("Item");
 
         itemsInLevel = gameObjects.Length;

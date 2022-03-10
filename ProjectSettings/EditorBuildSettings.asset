@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main/Map.unity
     guid: 5f0b47cd8231b334ab3d8d11aed449cd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Maps/BikeRoad.unity
     guid: c375fad875c9cca41be92a1574a6c7d3
   - enabled: 1
@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Maps/Pyramid_old.unity
     guid: 899a15cc3dc10e74eabc0667fdc8f916
+  - enabled: 1
+    path: Assets/Scenes/Maps/Pyramid.unity
+    guid: 6d382aaac120c5349b0651c9405a4194
+  - enabled: 1
+    path: Assets/Scenes/Maps/BikeRoad.unity
+    guid: 54453a616f44cb7429ad8e581feeff30
   m_configObjects: {}
