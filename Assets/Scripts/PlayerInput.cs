@@ -6,10 +6,11 @@ public class PlayerInput : MonoBehaviour
 {
     [SerializeField]
     float Sensitivity = 1;
+        RaycastHit hit;
 
     float zoomLevel; //Only for testing purposes
    
-    float min, max;
+    Vector2 clampX, clampY;
     float rotationX, rotationY;
     [SerializeField]GameObject itemText;
     GameObject[] gos;
@@ -17,29 +18,24 @@ public class PlayerInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        min = -54;
-        max = 56f;
+        clampX = new Vector2(-54f, 56f);
+        clampY = new Vector2(-5f, 15f);
     }
 
     void FixedUpdate(){
-        // Bit shift the index of the layer (8) to get a bit mask
-        int layerMask = LayerMask.GetMask("items");
-
-        RaycastHit hit;
-        // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity) && hit.transform.tag == "Item")
         {
+            //hit item
             if (gameObject.GetComponent<CameraInput>().cameraToggle && Input.GetMouseButtonDown(0))
             {
-                hit.collider.gameObject.tag = "Found";
+                hit.transform.tag = "Found";
             }
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            Debug.Log("Did Hit");
         }
         else
         {
+            //dit not hit 
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            Debug.Log("Did not Hit");
         }
 
     }
@@ -49,18 +45,13 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //Vind item
-
-
         rotationX += Input.GetAxis("Mouse X");
         rotationY -= Input.GetAxis("Mouse Y");
 
-        rotationX = Mathf.Clamp(rotationX, min, max);
-        rotationY = Mathf.Clamp(rotationY, -5, 15);
+        rotationX = Mathf.Clamp(rotationX, clampX.x, clampX.y);
+        rotationY = Mathf.Clamp(rotationY, clampY.x, clampY.y);
 
         transform.localEulerAngles = new Vector3(rotationY, rotationX, 0f);
-        //Debug.Log(mouseX);
       
         gos = GameObject.FindGameObjectsWithTag("Found");
         if (gos.Length == 2)
